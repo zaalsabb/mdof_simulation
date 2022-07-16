@@ -1,3 +1,4 @@
+import argparse
 import openseespy.opensees as ops
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -144,11 +145,24 @@ class SimulationModel():
             
 if __name__ == '__main__':
     
-    materials = 'test/model/materials.csv'
-    sections = 'test/model/sections.csv'
-    nodes = 'test/model/nodes.csv'
-    elements = 'test/model/elements.csv'
-    constraints = 'test/model/constraints.csv'
+    parser = argparse.ArgumentParser(description='Create MDOF structural frame models and analyze them using opensees in Python.')
+    parser.add_argument('-m','--materials', help='filepath to materials csv file', required=True)
+    parser.add_argument('-s','--sections', help='filepath to materials csv file', required=True)
+    parser.add_argument('-n','--nodes', help='filepath to nodes csv file', required=True)
+    parser.add_argument('-e','--elements', help='filepath to elements csv file', required=True)
+    parser.add_argument('-c','--constraints', help='filepath to constraints csv file', required=True)
+    parser.add_argument('-l','--loads', help='filepath to loads csv file', required=True)
+    parser.add_argument('-o','--output', help='filepath to output displacements csv file', required=False, default='output_displacements.csv')
+
+    args = vars(parser.parse_args())
+
+    materials = args['materials']
+    sections = args['sections']
+    nodes = args['nodes']
+    elements = args['elements']
+    constraints = args['constraints']
+    loads = args['loads']
+    output = args['output']    
 
     # create opensees model
     model = SimulationModel(materials, sections, nodes, elements, constraints)
@@ -156,35 +170,8 @@ if __name__ == '__main__':
     # initialize analysis paremeters
     model.set_analysis_parameters()
 
-    # test 4 load cases
-    # fx load case
-    load_case1 = 'test/load_cases/load_case1.csv'
-    output_disp1 = 'test/output_disp/output_disp1.csv'
-    model.apply_nodal_loads(load_case1)
+    # apply load and perform analysis
+    model.apply_nodal_loads(loads)
     ok = model.start_analysis()    
-    model.write_disps(output_disp1)
-    model.visualize(scale=100)    
-
-    # fy load case
-    load_case1 = 'test/load_cases/load_case2.csv'
-    output_disp1 = 'test/output_disp/output_disp2.csv'
-    model.apply_nodal_loads(load_case1)
-    ok = model.start_analysis()    
-    model.write_disps(output_disp1)
-    model.visualize(scale=100)    
-
-    # fz load case
-    load_case1 = 'test/load_cases/load_case3.csv'
-    output_disp1 = 'test/output_disp/output_disp3.csv'
-    model.apply_nodal_loads(load_case1)
-    ok = model.start_analysis()    
-    model.write_disps(output_disp1)
-    model.visualize(scale=100)    
-
-    # torsion load case
-    load_case1 = 'test/load_cases/load_case4.csv'
-    output_disp1 = 'test/output_disp/output_disp4.csv'
-    model.apply_nodal_loads(load_case1)
-    ok = model.start_analysis()    
-    model.write_disps(output_disp1)
-    model.visualize(scale=100)                
+    model.write_disps(output)
+    model.visualize(scale=100)             

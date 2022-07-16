@@ -1,2 +1,2 @@
 sections,Area,Iz,Iy,J,material
-I_beam,0.1,1.00E-04,1.00E-04,1.00E-06,steel
+I_beam,1.00E-04,1.00E-06,1.00E-06,1.00E-08,steel
