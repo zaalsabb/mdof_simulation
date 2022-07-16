@@ -5,7 +5,7 @@ Clone this package:
 ```
 git clone https://github.com/zaalsabb/mdof_simulation.git
 ```
-Install python requirements:
+Install python requirements (Tested using Python `3.9`):
 ```
 cd mdof_simulation
 pip install -r requirements.txt
