@@ -1,0 +1,9 @@
+element,node1,node2,section,localxz_x,localxz_y,localxz_z
+1,1,5,I_beam,0,1,0
+2,2,6,I_beam,0,1,0
+3,3,7,I_beam,0,1,0
+4,4,8,I_beam,0,1,0
+5,5,6,I_beam,0,1,0
+6,6,7,I_beam,1,0,0
+7,7,8,I_beam,0,1,0
+8,8,5,I_beam,1,0,0
