@@ -83,6 +83,16 @@ python mdof_sim.py -m MATERIALS.csv -s SECTIONS.csv -n NODES.csv -e ELEMENTS.csv
 
 ### Importing `SimulationModel`
 ```python
+from mdof_sim import SimulationModel
+
+materials = 'materials.csv'
+sections = 'sections.csv'
+nodes = 'nodes.csv'
+elements = 'elements.csv'
+constraints = 'constraints.csv'
+loads = 'loads.csv'
+output = 'output.csv'
+
 # create opensees model
 model = SimulationModel(materials, sections, nodes, elements, constraints)
 
