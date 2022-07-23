@@ -34,4 +34,7 @@ The outputs produced by the program include `nodes.txt`, `elements.txt`, and `di
 time node1_disp_x node1_disp_y node1_disp_z node2_disp_x node2_disp_y node2_disp_z ....
 ```
 
+### Displacements File
 The node displacements in `disp.out` don't have the node ids, but they are ordered in ascending order in terms of node ids. Every three columns contain the `x`, `y`, and `z` displacements for each node.
+
+The first timesteps, `0.0-1.0`, are for applying the gravity loads incrementally. The following timesteps `0.0-10.0` apply the earthquake ground motions.
