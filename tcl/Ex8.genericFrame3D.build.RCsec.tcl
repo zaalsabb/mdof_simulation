@@ -5,15 +5,8 @@
 #
 
 # SET UP ----------------------------------------------------------------------------
-wipe;				# clear memory of all past model definitions
-model BasicBuilder -ndm 3 -ndf 6;	# Define the model builder, ndm=#dimension, ndf=#dofs
-set dataDir ../Out;			# set up name of data directory
-file mkdir $dataDir; 			# create data directory
-source LibUnits.tcl;			# define units
-source DisplayPlane.tcl;		# procedure for displaying a plane in model
-source DisplayModel3D.tcl;		# procedure for displaying 3D perspectives of model
 source BuildRCrectSection.tcl;		# procedure for definining RC fiber section
-source ../Inputs.tcl;
+
 puts "Number of Stories in Y: $NStory Number of bays in X: $NBay Number of bays in Z: $NBayZ"
 set NFrame [expr $NBayZ + 1];	# actually deal with frames in Z direction, as this is an easy extension of the 2d model
 
@@ -328,7 +321,7 @@ set iNodePush $iMasterNode;		# nodes for pushover/cyclic, vectorized
 set iFPush $iFj;				# lateral load for pushover, vectorized
 
 # Define RECORDERS -------------------------------------------------------------
-recorder Node -file $dataDir/disp.out -time -nodeRange 1 $MaxNodeID -dof 1 2 3 disp;	# displacements of all
+recorder Node -file $dataDir/disp.out -time -nodeRange 1 $MaxNodeID -dof 1 2 3 4 5 6 disp;	# displacements of all
 set FreeNodeID [expr $NFrame*$Dframe+($NStory+1)*$Dlevel+($NBay+1)];					# ID: free node
 recorder Node -file $dataDir/DFree.out -time -node $FreeNodeID  -dof 1 2 3 disp;				# displacements of free node
 

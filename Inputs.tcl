@@ -1,4 +1,5 @@
 # ------ frame configuration
+set FrameType "Concrete"; # Options: Concrete, Steel
 set NStory 5;			# number of stories above ground level
 set NBay 1;			# number of bays in X direction
 set NBayZ 1;			# number of bays in Z direction
