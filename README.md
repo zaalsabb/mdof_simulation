@@ -1,5 +1,7 @@
 ## Multi Degree Of Freedom (MDOF) Simulation 
-Create MDOF structural frame models and analyze them using OpenSees.
+Create MDOF structural frame models and analyze them using OpenSees for post-disaster earthquake events.
+
+![fig1](img/fig1.png)
 
 ## OpenSees Installation
 Install [tcl](http://www.tcl.tk/software/tcltk/) on your machine to use OpenSees (>3.2.2).
@@ -43,7 +45,8 @@ node_id dx dy dz rotx roty rotz
 
 ### Visualization
 
-The script `process_disps.py` will also plot a 3d visualization of the displaced structure at scale=100. However, the scale is not constant in the x,y, and z directions.
+The script `process_disps.py` will also plot a 3d visualization of the displaced post-earthquake structure at scale=100. However, the scale is not constant in the x, y, and z directions.
 
 Example:
-![This is an image](img/fig1.png)
+
+![fig2](img/fig2.png)
