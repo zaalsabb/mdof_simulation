@@ -35,9 +35,15 @@ The outputs produced by the program include `nodes.txt`, `elements.txt`, `disp.o
 1. `nodes.txt`: defines node geometry, `node_id position_x position_y position_z`.
 2. `elements.txt`: defines element connectivity, `element_id node_1 node_2`.
 3. `disp.out`: defines node displacements at each timestep.
-4. `disps_final.txt`: defines the final node displacements (translation + rotations) at the final timestep:
+4. `disps_final.txt`: defines the final node displacements (translation + rotations) at the final timestep, which is produced by `process_disps.py`:
 
 ```
 node_id dx dy dz rotx roty rotz
 ```
 
+### Visualization
+
+The script `process_disps.py` will also plot a 3d visualization of the displaced structure at scale=100. However, the scale is not constant in the x,y, and z directions.
+
+Example:
+![This is an image](img/fig1.png)
